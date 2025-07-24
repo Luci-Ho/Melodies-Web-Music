@@ -1,7 +1,10 @@
 import React from 'react';
-import SectionTitle from './SectionTitle';
+
+import SectionGrid from './SectionGrid';
 import MusicCard from './MusicCard';
-import TrendingSongRow from './TrendingSongRow';
+import SectionTitle from './SectionTitle';
+
+// import TrendingSongRow from './TrendingSongRow';
 import ArtistCard from './ArtistCard';
 import AlbumCard from './AlbumCard';
 import PlaylistCard from './PlaylistCard';
@@ -9,69 +12,74 @@ import VideoCard from './VideoCard';
 import JoinSection from './JoinSection';
 
 import topSongs from '../../data/topSongs';
-import trendingSongs from '../../data/trendingSongs';
+// import trendingSongs from '../../data/trendingSongs';
 import artists from '../../data/artists';
 import albums from '../../data/albums';
 import playlists from '../../data/playlists';
 import videos from '../../data/videos';
 
-import TopBar from '../Layout/TopBar';
+import BannerCarousel from './BannerCarousel';
+import '../../style/SectionGrid.css';
 
 const HomeContent = () => {
   return (
-    <main className="w-full px-6 py-4 overflow-y-auto">
+    <main className="body-content">
+      <BannerCarousel />
 
-      <TopBar />
+      <SectionGrid
+        title="Weekly Top"
+        title1="Songs"
+        items={topSongs}
+        renderItem={(item, i) => <MusicCard key={i} {...item} />}
+      />
 
-      {/* Weekly Top Songs */}
-      <SectionTitle title="WEEKLY TOP SONGS" />
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-        {topSongs.map((song, index) => (
-          <MusicCard key={index} {...song} />
-        ))}
-      </div>
+      <SectionGrid        
+        title="New Release"
+        title1="Songs"
+        items={topSongs}
+        renderItem={(item, i) => <MusicCard key={i} {...item} />}
+      />
 
-      {/* Trending Songs */}
-      <SectionTitle title="TRENDING SONGS" />
-      <div className="flex flex-col gap-4">
-        {trendingSongs.map((song, index) => (
-          <TrendingSongRow key={index} rank={index + 1} {...song} />
-        ))}
-      </div>
+      <SectionGrid
+        title="Top"
+        title1="Albums"
+        items={topSongs}
+        renderItem={(item, i) => <MusicCard key={i} {...item} />}
+      />
 
-      {/* Popular Artists */}
-      <SectionTitle title="POPULAR ARTISTS" />
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+      <SectionGrid
+        title="Mood"
+        title1="Playlist"
+        items={topSongs}
+        renderItem={(item, i) => <PlaylistCard key={i} {...item} />}
+      />
+
+      <SectionTitle
+      title="Poppular"
+      title1="Artist"
+      />
+      <div className="artist-scroll-wrapper">
         {artists.map((artist, index) => (
           <ArtistCard key={index} {...artist} />
         ))}
       </div>
 
-      {/* Music Videos */}
-      <SectionTitle title="MUSIC VIDEO" />
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+
+      <SectionTitle 
+      title="Music"
+      title1="Video"
+      />
+      <div className="video-scroll-wrapper">
         {videos.map((video, index) => (
           <VideoCard key={index} {...video} />
         ))}
+        <button className="view-all-button">View All</button>
       </div>
 
-      {/* Top Albums */}
-      <SectionTitle title="TOP ALBUMS" />
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-        {albums.map((album, index) => (
-          <AlbumCard key={index} {...album} />
-        ))}
-      </div>
-
-      {/* Mood Playlist */}
-      <SectionTitle title="MOOD PLAYLIST" />
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-        {playlists.map((playlist, index) => (
-          <PlaylistCard key={index} {...playlist} />
-        ))}
-      </div>
-
-      {/* Join Our Platform */}
+      <SectionTitle 
+      title="Join Our Platform"
+      title1=""
+      />
       <JoinSection />
     </main>
   );

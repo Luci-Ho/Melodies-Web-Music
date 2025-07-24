@@ -22,11 +22,15 @@ app.use(cors());
 const songRoutes = require('./routes/songRoutes.js');
 const artistRoutes = require('./routes/artistRoutes.js');
 const albumRoutes = require('./routes/albumRoutes.js');
+const bannerRoutes = require('./routes/bannerRoutes');
+
+
 
 // API route registration
 app.use('/api/songs', songRoutes);
 app.use('/api/artists', artistRoutes);
 app.use('/api/albums', albumRoutes);
+app.use('/api/banners', bannerRoutes);
 
 // Health check endpoint
 app.get('/', (req, res) => {

@@ -1,15 +1,19 @@
 // src/components/Home/VideoCard.jsx
 import React from 'react';
+import '../../style/SectionGrid.css';
 
 const VideoCard = ({ img, title, artist, views }) => {
   return (
-    <div className="bg-white rounded-lg shadow hover:shadow-md transition duration-300 overflow-hidden">
-      <img src={img} alt={title} className="w-full h-40 object-cover" />
-      <div className="p-3">
-        <h2 className="text-sm font-medium truncate">{title}</h2>
-        <div className="flex justify-between text-xs text-gray-500">
-          <p>{artist}</p>
-          <span>{views}</span>
+    <div className="video-card">
+      <div className="video-thumbnail">
+        <img src={img} alt={title} />
+      </div>
+
+      <div className="video-info">
+        <h4 className="video-title">{title}</h4>
+        <div className="video-meta">
+          <span className="video-artist">{artist}</span>
+          <span className="video-views">{views}</span>
         </div>
       </div>
     </div>
@@ -17,3 +21,4 @@ const VideoCard = ({ img, title, artist, views }) => {
 };
 
 export default VideoCard;
+

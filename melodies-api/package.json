@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "dev": "node src/index.js",
     "start": "node src/index.js",
     "seed": "node seed.js",
     "lint": "eslint .",
@@ -15,16 +16,16 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
     "mongoose": "^8.4.1"
   },
   "devDependencies": {
-    "eslint": "^9.x.x",
     "@eslint/js": "^9.x.x",
-    "globals": "^15.x.x",
+    "eslint": "^9.x.x",
     "eslint-config-prettier": "^9.x.x",
     "eslint-plugin-prettier": "^5.x.x",
+    "globals": "^15.x.x",
     "prettier": "^3.x.x"
   }
 }

@@ -4,24 +4,30 @@ import Footer from '../components/Layout/Footer';
 import '../style/PageLayout.css';
 import '../App.css';
 import HomeContent from '../components/Home/HomeContent';
+import TopBar from '../components/Layout/TopBar';
 
 const HomePage = () => {
-  const [songs, setSongs] = useState([]);
+  // const [songs, setSongs] = useState([]);
 
-  useEffect(() => {
-    fetch('http://localhost:3000/api/songs') // ← gọi API backend
-      .then((res) => res.json())
-      .then((data) => setSongs(data))
-      .catch((err) => console.error('Lỗi lấy dữ liệu bài hát:', err));
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://localhost:3000/api/songs') // ← gọi API backend
+  //     .then((res) => res.json())
+  //     .then((data) => setSongs(data))
+  //     .catch((err) => console.error('Lỗi lấy dữ liệu bài hát:', err));
+  // }, []);
 
   return (
     <div className="body">
       <div style={{ display: 'flex', width: '100%' }}>
         <Dashboard />
         <div>
-        <HomeContent />
-        <Footer />
+          <TopBar />
+          <HomeContent />
+          <div></div>
+          <div>
+          </div>
+
+          <Footer />
         </div>
       </div>
     </div>

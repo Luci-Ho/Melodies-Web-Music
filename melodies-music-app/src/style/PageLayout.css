@@ -49,3 +49,10 @@
     }
   }
   
+  .body-content{
+    padding: 30px;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }

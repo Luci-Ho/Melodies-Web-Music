@@ -1,14 +1,23 @@
 // src/components/Home/JoinSection.jsx
 import React from 'react';
+import '../../Index.css';
+
 
 const JoinSection = () => {
   return (
-    <div className="mt-8 p-6 text-center bg-blue-100 rounded">
-      <h3 className="text-lg font-semibold mb-2">Join Our Music Community!</h3>
-      <p className="text-sm mb-4">Discover, share, and enjoy the best tunes.</p>
-      <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-        Sign Up Now
-      </button>
+    <div className="JoinSection-group">
+      
+      <p>You can be one of the
+        <span  style={{ color: "#EE10B0", fontWeight: '700' }}> members </span>
+        of our platform by just adding some necessarily information. if you already have an account on our website, you can just hit the
+        <span> </span>
+        <span style={{ color: "#0E9EEF", fontWeight: '700' }}>Login button</span>.
+      </p>
+      
+      <div className="JoinSection-group-button">
+      <button>Sign Up</button>
+      <button>Log in</button>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { Form } from 'antd';
+
 import AuthHeader from '../components/LoginSignIn/AuthHeader';
 import InputField from '../components/LoginSignIn/InputField';
 import SubmitButton from '../components/LoginSignIn/SubmitButton';
@@ -8,47 +10,33 @@ import AuthForm from '../components/LoginSignIn/AuthForm';
 import '../style/LoginSignIn/login.css';
 
 const logoImage = "https://res.cloudinary.com/da4y5zf5k/image/upload/v1751044695/logo-no-background_1_z7njh8.png";
-
-// 🔗 
 const API_URL = 'https://mindx-mockup-server.vercel.app/api/resources/users?apiKey=686295aaaa4ddee877e5a9f8';
 
 const Login = () => {
   const navigate = useNavigate();
+  const [form] = Form.useForm();
 
-  const [formData, setFormData] = useState({ email: '', password: '' });
+  const handleSubmit = async (values) => {
+    const { email, password } = values;
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const validate = () => {
-    const { email, password } = formData;
     if (!/\S+@\S+\.\S+/.test(email)) {
       toast.error('Email không hợp lệ!');
-      return false;
+      return;
     }
     if (!password) {
       toast.error('Vui lòng nhập mật khẩu!');
-      return false;
+      return;
     }
-    return true;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validate()) return;
 
     try {
-      const res = await fetch(`${API_URL}?email=${formData.email}`);
+      const res = await fetch(`${API_URL}&email=${email}`);
       const users = await res.json();
 
-      const matchedUser = users.find(user => user.password === formData.password);
+      const matchedUser = users.find(user => user.password === password);
 
       if (matchedUser) {
         toast.success('Đăng nhập thành công!');
-        // 👉 Lưu thông tin nếu cần
-        // localStorage.setItem('user', JSON.stringify(matchedUser));
+        localStorage.setItem('user', JSON.stringify(matchedUser));
         navigate('/home');
       } else {
         toast.error('Email hoặc mật khẩu không đúng!');
@@ -69,21 +57,9 @@ const Login = () => {
 
         <AuthHeader title="Login To Continue" />
 
-        <AuthForm type="login" onSubmit={handleSubmit}>
-          <InputField
-            label="E-Mail"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          <InputField
-            label="Password"
-            name="password"
-            type="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
+        <AuthForm form={form} onSubmit={handleSubmit}>
+          <InputField label="E-Mail" name="email" type="email" form={form} />
+          <InputField label="Password" name="password" type="password" form={form} />
           <div className="submit">
             <div className="forgot-password">Forgot password &gt;</div>
             <SubmitButton text="Login" />

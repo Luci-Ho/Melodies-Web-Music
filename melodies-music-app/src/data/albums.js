@@ -8,6 +8,26 @@ const albums = [
       albumTitle: "Scorpion",
       img: "/images/scorpion.jpg",
       onClick: () => {}
+    },
+    {
+      albumTitle: "1989",
+      img: "/images/1989.jpg",
+      onClick: () => {}
+    },
+    {
+      albumTitle: "Scorpion",
+      img: "/images/scorpion.jpg",
+      onClick: () => {}
+    },
+    {
+      albumTitle: "1989",
+      img: "/images/1989.jpg",
+      onClick: () => {}
+    },
+    {
+      albumTitle: "Scorpion",
+      img: "/images/scorpion.jpg",
+      onClick: () => {}
     }
   ];
   

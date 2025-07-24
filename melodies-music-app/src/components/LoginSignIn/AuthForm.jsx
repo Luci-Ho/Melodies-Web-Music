@@ -3,14 +3,20 @@
 //dùng chung
 // components/AuthForm.jsx
 
+// components/AuthForm.jsx
 import { Form } from 'antd';
 
-const AuthForm = ({ onSubmit, children }) => (
-  <Form layout="vertical" onFinish={onSubmit} requiredMark={false}>
-    {children}
-  </Form>
-);
+const AuthForm = ({ children, form, onSubmit }) => {
+  return (
+    <Form
+      form={form}                // kết nối form instance
+      onFinish={onSubmit}        // kích hoạt khi submit
+      layout="vertical"          // kiểu layout form
+      requiredMark={false}       // ẩn dấu * bắt buộc
+    >
+      {children}
+    </Form>
+  );
+};
 
 export default AuthForm;
-
-  

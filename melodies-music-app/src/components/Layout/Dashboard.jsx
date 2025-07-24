@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../style/DashboardFooter.css';
+import { toast } from 'react-toastify';
 import {
   HomeFilled,
   CompassOutlined,
@@ -14,8 +15,18 @@ import {
   LogoutOutlined
 } from '@ant-design/icons';
 
+
 const Dashboard = () => {
   const navigate = useNavigate();
+
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  <div className="logo">
+    <p>Melodies</p>
+    <small>
+      {user ? `Xin chào ${user.username}! 🎶` : 'Cùng nghe nhạc vui nhé'}
+    </small>
+  </div>
 
   useEffect(() => {
     const toggleSidebar = () => {
@@ -38,8 +49,11 @@ const Dashboard = () => {
 
   const handleLogout = () => {
     // Xử lý đăng xuất tại đây
+    localStorage.removeItem('user');
+    toast.success('Đăng xuất thành công!');
     console.log('Đăng xuất thành công!');
     navigate('/login');
+
   };
 
   const MenuItem = ({ icon, label, to }) => (

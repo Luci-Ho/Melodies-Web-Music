@@ -12,11 +12,9 @@ import SignUp from './view-pages/SignUp';
 import Artist from './view-pages/Artist' ;
 import Album from './view-pages/Album';
 
-// import ForgotPassword from './view-pages/ForgotPassword';
-// import ResetPassword from './view-pages/ResetPassword';
-// import VerifyEmail from './view-pages/VerifyEmail';
-// import VerifyPhone from './view-pages/VerifyPhone';
-// import VerifyOTP from './view-pages/VerifyOTP';
+
+import PrivateRoute from './routes/PrivateRoute';
+
 
 function App() {
   return (
@@ -29,13 +27,8 @@ function App() {
         <Route path="/artist" element={<Artist/>}/>
         <Route path="/Album" element={<Album/>}/>
         
-        {/* <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/verify-email" element={<VerifyEmail />} />
-        <Route path="/verify-phone" element={<VerifyPhone />} />
-        <Route path="/verify-otp" element={<VerifyOTP />} /> */}
       </Routes>
-      {/* <ToastContainer /> */}
+      
     </>
   );
 }

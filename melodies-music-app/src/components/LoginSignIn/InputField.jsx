@@ -7,7 +7,7 @@
 import { useState } from 'react';
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 
-const InputField = ({ label, type, name, value, onChange }) => {
+const InputField = ({ label, type, name, }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const isToggleable = type === 'password';
@@ -20,8 +20,6 @@ const InputField = ({ label, type, name, value, onChange }) => {
         name={name}
         placeholder={label}
         required
-        value={value}
-        onChange={onChange}
         className="basic-input"
       />
 
